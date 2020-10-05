@@ -1,0 +1,64 @@
+<ion-header (click)="statusLogLang()">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-footer *ngIf="language == 'es'" no-border>
+        <ion-title>Reservaciones</ion-title>
+    </ion-footer>
+    <ion-footer *ngIf="language == 'en'" no-border>
+        <ion-title>Reservations</ion-title>
+    </ion-footer>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" (click)="statusLogLang()">
+  <ion-footer *ngIf="language == 'es'" no-border>
+    <ion-footer class="head" no-border>
+      <ion-label class="head-label">----------------------------------------------</ion-label>
+      <br/>
+      <ion-icon color="light" name="mail"></ion-icon>
+      <ion-label class="head-label"> Estado de mis reservaciones</ion-label>
+      <br/>
+      <ion-label class="head-label">----------------------------------------------</ion-label>
+    </ion-footer>
+    <ion-footer class="form-register" no-border>
+        <ion-footer *ngFor="let reservation of reservations" no-border>
+          <ion-item-sliding>
+            <ion-item lines="none" color="favorite" button *ngIf="reservation['email'] == nickname" [routerLink]="['/sdreservation', reservation['id']]">
+              <ion-label>{{ reservation['date'] }} {{ reservation['hour'] }}</ion-label>
+              <ion-note slot="end" *ngIf="reservation['status'] == 'Verde'" color="success">Aprobada</ion-note>
+              <ion-note slot="end" *ngIf="reservation['status'] == 'Rojo'" color="warning">Rechazada</ion-note>
+              <ion-note slot="end" *ngIf="reservation['status'] == 'Gris'" color="dark">Sin Respuesta</ion-note>
+            </ion-item>
+            <br/>
+          </ion-item-sliding>
+        </ion-footer>
+    </ion-footer>
+    <ion-img class="logo-end" src="../../../assets/images/icon.png"></ion-img>
+  </ion-footer>
+  <ion-footer *ngIf="language == 'en'" no-border>
+    <ion-footer class="head" no-border>
+      <ion-label class="head-label">----------------------------------------------</ion-label>
+      <br/>
+      <ion-icon color="light" name="mail"></ion-icon>
+      <ion-label class="head-label"> Status of my reservations</ion-label>
+      <br/>
+      <ion-label class="head-label">----------------------------------------------</ion-label>
+    </ion-footer>
+    <ion-footer class="form-register" no-border>
+    <ion-footer *ngFor="let reservation of reservations" no-border>
+      <ion-item-sliding>
+        <ion-item lines="none" color="favorite" button *ngIf="reservation['email'] == nickname" [routerLink]="['/sdreservation', reservation['id']]">
+          <ion-label>{{ reservation['date'] }} {{ reservation['hour'] }}</ion-label>
+          <ion-note slot="end" *ngIf="reservation['status'] == 'Verde'" color="success">Approved</ion-note>
+          <ion-note slot="end" *ngIf="reservation['status'] == 'Rojo'" color="warning">Rejected</ion-note>
+          <ion-note slot="end" *ngIf="reservation['status'] == 'Gris'" color="dark">Unanswered</ion-note>
+        </ion-item>
+        <br/>
+      </ion-item-sliding>
+    </ion-footer>
+  </ion-footer>
+    <ion-img class="logo-end" src="../../../assets/images/icon.png"></ion-img>
+  </ion-footer>
+</ion-content>

@@ -1,0 +1,46 @@
+<ion-tabs (click)="statusLogLang()">
+ 
+  <ion-tab-bar slot="bottom" color="primary">
+
+    <ion-tab-button tab="tab" style="border-right: 1px dashed #FFFFFF;">
+      <ion-icon color="light" name="flame"></ion-icon>
+      <ion-footer *ngIf="language == 'es'" no-border>
+          <ion-label color="light">Especiales</ion-label>
+      </ion-footer>
+      <ion-footer color="light" *ngIf="language == 'en'" no-border>
+          <ion-label color="light">Specials</ion-label>
+      </ion-footer>
+    </ion-tab-button>
+ 
+    <ion-tab-button tab="tab1" style="border-right: 1px dashed #FFFFFF;">
+      <ion-icon color="light" name="paper"></ion-icon>
+      <ion-footer *ngIf="language == 'es'" no-border>
+          <ion-label color="light">Eventos</ion-label>
+      </ion-footer>
+      <ion-footer *ngIf="language == 'en'" no-border>
+          <ion-label color="light">Events</ion-label>
+      </ion-footer>
+    </ion-tab-button>
+ 
+    <ion-tab-button tab="tab2" style="border-right: 1px dashed #FFFFFF;">
+      <ion-icon color="light" name="restaurant"></ion-icon>
+      <ion-footer *ngIf="language == 'es'" no-border>
+          <ion-label color="light">Comidas</ion-label>
+      </ion-footer>
+      <ion-footer *ngIf="language == 'en'" no-border>
+          <ion-label color="light">Foods</ion-label>
+      </ion-footer>
+    </ion-tab-button>
+
+    <ion-tab-button tab="tab3"> 
+      <ion-icon color="light" name="mail"></ion-icon>
+      <ion-footer *ngIf="language == 'es'" no-border>
+          <ion-label color="light">Reservación</ion-label>
+      </ion-footer>
+      <ion-footer *ngIf="language == 'en'" no-border>
+          <ion-label color="light">Reservation</ion-label>
+      </ion-footer>
+    </ion-tab-button>
+  </ion-tab-bar>
+ 
+</ion-tabs>

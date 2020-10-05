@@ -1,0 +1,67 @@
+<ion-header (click)="statusLogLang()">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-footer *ngIf="language == 'es'" no-border>
+        <ion-title>Inicio de Sesión</ion-title>
+    </ion-footer>
+    <ion-footer *ngIf="language == 'en'" no-border>
+        <ion-title>Login</ion-title>
+    </ion-footer>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content class="ion-padding" (click)="statusLogLang()">
+  <ion-footer *ngIf="language == 'es'" no-border>
+
+    <ion-img class="logo" src="../../../assets/images/icon.png"></ion-img>
+
+      <ion-footer class="logo-login" no-border>
+          <ion-icon class="big-icon" name="contact" color="light"></ion-icon>
+      </ion-footer>
+
+      <ion-footer class="form-inputs" no-border>
+        <ion-item class="bottom-inputs" color="light">
+          <ion-label><ion-icon name="mail" color="primary"></ion-icon></ion-label>
+          <ion-input required type="email" [(ngModel)]="user.email" placeholder="Correo electrónico..."></ion-input>
+      </ion-item>
+  
+      <ion-item class="bottom-inputs" color="light">
+          <ion-label><ion-icon name="lock" color="primary"></ion-icon></ion-label>
+          <ion-input required type="password" [(ngModel)]="user.password" placeholder="Contraseña..."></ion-input>
+      </ion-item>
+      
+      <ion-button class="bottom-button" color="favorite" (click)="login()"><ion-icon name="log-in" color="light"></ion-icon> Entrar</ion-button>
+          
+          <ion-item class="ion-text-center top-label">
+            <ion-label style="text-decoration: underline; color: #0094FF;" routerLink='/menu/third/password'>Olvide mi contraseña!</ion-label>
+          </ion-item>
+      </ion-footer>
+  </ion-footer>
+  <ion-footer *ngIf="language == 'en'" no-border>
+      <ion-img class="logo" src="../../../assets/images/icon.png"></ion-img>
+
+      <ion-footer class="logo-login" no-border>
+          <ion-icon class="big-icon" name="contact" color="light"></ion-icon>
+      </ion-footer>
+
+      <ion-footer class="form-inputs" no-border>
+        <ion-item class="bottom-inputs" color="light">
+          <ion-label><ion-icon name="mail" color="primary"></ion-icon></ion-label>
+          <ion-input required type="email" [(ngModel)]="user.email" placeholder="Email..."></ion-input>
+      </ion-item>
+  
+      <ion-item class="bottom-inputs" color="light">
+          <ion-label><ion-icon name="lock" color="primary"></ion-icon></ion-label>
+          <ion-input required type="password" [(ngModel)]="user.password" placeholder="Password..."></ion-input>
+      </ion-item>
+      
+      <ion-button class="bottom-button" color="favorite" (click)="login()"><ion-icon name="log-in" color="light"></ion-icon> Log in</ion-button>
+          
+          <ion-item class="ion-text-center top-label">
+            <ion-label style="text-decoration: underline; color: #0094FF;" routerLink='/menu/third/password'>I Forgot My Password!</ion-label>
+          </ion-item>   
+        </ion-footer>
+  </ion-footer>
+</ion-content>

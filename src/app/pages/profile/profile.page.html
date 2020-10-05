@@ -1,0 +1,114 @@
+<ion-header (click)="statusLogLang()">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button ></ion-menu-button>
+    </ion-buttons>
+    <ion-footer *ngIf="language == 'es'" no-border>
+        <ion-title>Mi Perfil</ion-title>
+    </ion-footer>
+    <ion-footer *ngIf="language == 'en'" no-border>
+        <ion-title>My Profile</ion-title>
+    </ion-footer>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" (click)="statusLogLang()">
+  <ion-footer *ngIf="language == 'es'" no-border>
+    <ion-footer class="head" no-border>
+      <ion-label class="head-label">---------------------</ion-label>
+      <br/>
+      <ion-icon color="light" name="person"></ion-icon>
+      <ion-label class="head-label"> Editar perfil</ion-label>
+      <br/>
+      <ion-label class="head-label">---------------------</ion-label>
+    </ion-footer>
+    <ion-footer class="form-register" no-border>
+      <ion-footer *ngIf="nickname != '' " no-border>
+        <ion-item class="bottom-inputs" color="light">
+          <ion-label><ion-icon name="person" color="primary"></ion-icon></ion-label>
+          <ion-input required type="text" [(ngModel)]="user.name" placeholder="Nombre..."></ion-input>
+          <ion-label><ion-icon name="finger-print" color="primary"></ion-icon></ion-label>
+          <ion-input required type="text" [(ngModel)]="user.lastname" placeholder="Apellido..."></ion-input>
+        </ion-item>
+    
+        <ion-item class="bottom-inputs" color="light">
+          <ion-label><ion-icon name="phone-portrait" color="primary"></ion-icon></ion-label>
+          <ion-input required type="text" [(ngModel)]="user.cellphone" placeholder="Número de teléfono..."></ion-input>
+        </ion-item>
+    
+        <ion-item class="bottom-inputs" color="light">
+          <ion-label><ion-icon name="mail" color="primary"></ion-icon></ion-label>
+          <ion-input required type="email" [(ngModel)]="user.email" placeholder="Correo electrónico..." disabled></ion-input>
+        </ion-item>
+    
+        <ion-item class="bottom-inputs" color="light">
+            <ion-label><ion-icon name="lock" color="primary"></ion-icon></ion-label>
+            <ion-input required type="password" [(ngModel)]="user.password" placeholder="Contraseña..."></ion-input>
+        </ion-item>
+    
+        <ion-item class="bottom-inputs" color="light">
+          <ion-label><ion-icon name="lock" color="primary"></ion-icon></ion-label>
+          <ion-input required type="password" [(ngModel)]="user.repeatpassword" placeholder="Confirmar contraseña..."></ion-input>
+        </ion-item> 
+        
+        <ion-footer class="dialog-alert" no-border>
+          <ion-icon class="head-icon-dialog" color="danger" name="alert"></ion-icon>
+          <ion-label class="head-label-dialog" color="light"> No escribas en la contraseña</ion-label>
+          <br/>
+          <ion-label class="head-label-dialog" color="light">si no quieres editarla </ion-label>
+        </ion-footer>
+      </ion-footer> 
+      <ion-button class="bottom-button" color="favorite" (click)="editProfile()"><ion-icon name="save" color="light"></ion-icon> Guardar cambios</ion-button>
+    </ion-footer>
+    <ion-img class="logo-end" src="../../../assets/images/icon.png"></ion-img>
+  </ion-footer>
+  <ion-footer *ngIf="language == 'en'" no-border>
+    <ion-footer class="head" no-border>
+      <ion-label class="head-label">---------------------</ion-label>
+      <br/>
+      <ion-icon color="light" name="person"></ion-icon>
+      <ion-label class="head-label"> Edit profile</ion-label>
+      <br/>
+      <ion-label class="head-label">---------------------</ion-label>
+    </ion-footer>
+    <ion-footer class="form-register" no-border>
+      <ion-footer *ngIf="nickname != '' " no-border>
+        <ion-item class="bottom-inputs" color="light">
+          <ion-label><ion-icon name="person" color="primary"></ion-icon></ion-label>
+          <ion-input required type="text" [(ngModel)]="user.name" placeholder="Name..."></ion-input>
+          <ion-label><ion-icon name="finger-print" color="primary"></ion-icon></ion-label>
+          <ion-input required type="text" [(ngModel)]="user.lastname" placeholder="Last name..."></ion-input>
+        </ion-item>
+    
+        <ion-item class="bottom-inputs" color="light">
+          <ion-label><ion-icon name="phone-portrait" color="primary"></ion-icon></ion-label>
+          <ion-input required type="text" [(ngModel)]="user.cellphone" placeholder="Phone number..."></ion-input>
+        </ion-item>
+    
+        <ion-item class="bottom-inputs" color="light">
+          <ion-label><ion-icon name="mail" color="primary"></ion-icon></ion-label>
+          <ion-input required type="email" [(ngModel)]="user.email" placeholder="Email..." disabled></ion-input>
+        </ion-item>
+    
+        <ion-item class="bottom-inputs" color="light">
+            <ion-label><ion-icon name="lock" color="primary"></ion-icon></ion-label>
+            <ion-input required type="password" [(ngModel)]="user.password" placeholder="Password..."></ion-input>
+        </ion-item>
+    
+        <ion-item class="bottom-inputs" color="light">
+          <ion-label><ion-icon name="lock" color="primary"></ion-icon></ion-label>
+          <ion-input required type="password" [(ngModel)]="user.repeatpassword" placeholder="Confirm password..."></ion-input>
+        </ion-item> 
+    
+        <ion-footer class="dialog-alert" no-border>
+          <ion-icon class="head-icon-dialog" color="danger" name="alert"></ion-icon>
+          <ion-label class="head-label-dialog" color="light"> Do not type in the password</ion-label>
+          <br/>
+          <ion-label class="head-label-dialog" color="light">if you do not want to edit it </ion-label>
+        </ion-footer>
+      </ion-footer> 
+      <ion-button class="bottom-button" color="favorite" (click)="editProfile()"><ion-icon name="save" color="light"></ion-icon> Save changes</ion-button>
+    </ion-footer>
+    <ion-img class="logo-end" src="../../../assets/images/icon.png"></ion-img>
+  </ion-footer>
+</ion-content>

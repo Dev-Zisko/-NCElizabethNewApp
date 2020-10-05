@@ -1,0 +1,188 @@
+<ion-header (click)="statusLogLang()">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-footer *ngIf="language == 'es'" no-border>
+        <ion-title>Eventos</ion-title>
+    </ion-footer>
+    <ion-footer *ngIf="language == 'en'" no-border>
+        <ion-title>Events</ion-title>
+    </ion-footer>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" (click)="statusLogLang()">
+  <ion-footer *ngIf="language == 'es'" no-border>
+      <ion-footer *ngIf="category == ''" no-border>
+          <p class="choose-one ion-margin ion-padding" style="text-align: center;">Seleccione una y haga click en buscar: </p>
+        </ion-footer>
+        <ion-item lines="none" class="ion-margin" color="favorite" (click)="cleanCategory()">
+          <ion-label>Categoría: </ion-label>
+          <ion-select interface="popover" [(ngModel)]="category" name="category">
+            <ion-footer *ngFor="let category of categories" no-border>
+              <ion-select-option value="{{ category.id }}">
+              {{ category.name }}</ion-select-option>
+            </ion-footer>
+          </ion-select>
+        </ion-item>
+        <ion-footer class="centrado" no-border>
+          <ion-button class="bottom-button" type="submit" color="favorite" (click)="getEvents()"><ion-icon name="search" color="light"></ion-icon> Buscar</ion-button>
+        </ion-footer> 
+        <ion-footer class="card-foods" *ngIf="category == '2'  && validate == 'Si'" no-border>
+          <ion-footer class="card-food" *ngFor="let eventf of eventsf" no-border>
+            <ion-card color="favorite"> 
+              <img src="{{ storageUri + eventf.image }}" />
+              <div class="text-price"> {{ eventf.price }}</div>
+              <ion-card-header>
+                <ion-card-subtitle>{{ eventf.description }}</ion-card-subtitle>
+                <ion-card-title>{{ eventf.title }}</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                Fecha: {{ eventf.date }} {{ eventf.hour }} Hrs. 
+                {{ eventf.extra }}
+              </ion-card-content>
+            </ion-card>
+          </ion-footer>
+        </ion-footer>
+        <ion-footer class="card-foods" *ngIf="category != '2'  && validate == 'Si'" no-border>
+          <ion-footer *ngIf="category != ''" no-border>
+          <ion-footer class="card-food" *ngFor="let event of events" no-border>
+              <ion-footer *ngIf="event.day == '1'">
+                <ion-item class="choose-one ion-text-center" color="primary" lines="none">
+                  <ion-label>Lunes</ion-label>
+                </ion-item>
+              </ion-footer>
+              <ion-footer *ngIf="event.day == '2'" no-border>
+                  <ion-item class="choose-one ion-text-center" color="primary" lines="none">
+                      <ion-label>Martes</ion-label>
+                    </ion-item>
+              </ion-footer>
+              <ion-footer *ngIf="event.day == '3'" no-border>
+                  <ion-item class="choose-one ion-text-center" color="primary" lines="none">
+                      <ion-label>Miércoles</ion-label>
+                    </ion-item>
+              </ion-footer>
+              <ion-footer *ngIf="event.day == '4'" no-border>
+                  <ion-item class="choose-one ion-text-center" color="primary" lines="none">
+                      <ion-label>Jueves</ion-label>
+                    </ion-item>
+              </ion-footer>
+              <ion-footer *ngIf="event.day == '5'" no-border>
+                  <ion-item class="choose-one ion-text-center" color="primary" lines="none">
+                      <ion-label>Viernes</ion-label>
+                    </ion-item>
+              </ion-footer>
+              <ion-footer *ngIf="event.day == '6'" no-border>
+                  <ion-item class="choose-one ion-text-center" color="primary" lines="none">
+                      <ion-label>Sábado</ion-label>
+                    </ion-item>
+              </ion-footer>
+              <ion-footer *ngIf="event.day == '7'" no-border>
+                  <ion-item class="choose-one ion-text-center" color="primary" lines="none">
+                      <ion-label>Domingo</ion-label>
+                    </ion-item>
+              </ion-footer>
+            <ion-card color="favorite" *ngIf="event.id_category == category"> 
+              <img src="{{ storageUri + event.image }}" />
+              <div class="text-price"> {{ event.price }}</div>
+              <ion-card-header>
+                <ion-card-subtitle>{{ event.description }}</ion-card-subtitle>
+                <ion-card-title>{{ event.title }}</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                {{ event.extra }}
+              </ion-card-content>
+            </ion-card>
+          </ion-footer>
+          </ion-footer>
+        </ion-footer>
+        <ion-img class="logo-end" src="../../../assets/images/icon.png"></ion-img>  
+  </ion-footer>
+  <ion-footer *ngIf="language == 'en'" no-border>
+    <ion-footer *ngIf="category == ''" no-border>
+      <p class="choose-one ion-margin ion-padding" style="text-align: center;">Choose one and click on search: </p>
+    </ion-footer>
+    <ion-item lines="none" class="ion-margin" color="favorite" (click)="cleanCategory()">
+      <ion-label>Category: </ion-label>
+      <ion-select interface="popover" [(ngModel)]="category" name="category">
+        <ion-footer *ngFor="let category of categories" no-border>
+          <ion-select-option value="{{ category.id }}">
+          {{ category.name }}</ion-select-option>
+        </ion-footer>
+      </ion-select>
+    </ion-item>
+    <ion-footer class="centrado" no-border>
+      <ion-button class="bottom-button" type="submit" color="favorite" (click)="getEvents()"><ion-icon name="search" color="light"></ion-icon> Search</ion-button>
+    </ion-footer> 
+    <ion-footer class="card-foods" *ngIf="category == '2'  && validate == 'Si'" no-border>
+      <ion-footer class="card-food" *ngFor="let eventf of eventsf" no-border>
+        <ion-card color="favorite"> 
+          <img src="{{ storageUri + eventf.image }}" />
+          <div class="text-price"> {{ eventf.price }}</div>
+          <ion-card-header>
+            <ion-card-subtitle>{{ eventf.description }}</ion-card-subtitle>
+            <ion-card-title>{{ eventf.title }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Date: {{ eventf.date }} {{ eventf.hour }} Hrs. 
+            {{ eventf.extra }}
+          </ion-card-content>
+        </ion-card>
+      </ion-footer>
+    </ion-footer>
+    <ion-footer class="card-foods" *ngIf="category != '2'  && validate == 'Si'" no-border>
+      <ion-footer *ngIf="category != ''" no-border>
+      <ion-footer class="card-food" *ngFor="let event of events" no-border>
+          <ion-footer *ngIf="event.day == '1'">
+            <ion-item class="choose-one ion-text-center" color="primary" lines="none">
+              <ion-label>Monday</ion-label>
+            </ion-item>
+          </ion-footer>
+          <ion-footer *ngIf="event.day == '2'" no-border>
+              <ion-item class="choose-one ion-text-center" color="primary" lines="none">
+                  <ion-label>Tuesday</ion-label>
+                </ion-item>
+          </ion-footer>
+          <ion-footer *ngIf="event.day == '3'" no-border>
+              <ion-item class="choose-one ion-text-center" color="primary" lines="none">
+                  <ion-label>Wednesday</ion-label>
+                </ion-item>
+          </ion-footer>
+          <ion-footer *ngIf="event.day == '4'" no-border>
+              <ion-item class="choose-one ion-text-center" color="primary" lines="none">
+                  <ion-label>Thursday</ion-label>
+                </ion-item>
+          </ion-footer>
+          <ion-footer *ngIf="event.day == '5'" no-border>
+              <ion-item class="choose-one ion-text-center" color="primary" lines="none">
+                  <ion-label>Friday</ion-label>
+                </ion-item>
+          </ion-footer>
+          <ion-footer *ngIf="event.day == '6'" no-border>
+              <ion-item class="choose-one ion-text-center" color="primary" lines="none">
+                  <ion-label>Saturday</ion-label>
+                </ion-item>
+          </ion-footer>
+          <ion-footer *ngIf="event.day == '7'" no-border>
+              <ion-item class="choose-one ion-text-center" color="primary" lines="none">
+                  <ion-label>Sunday</ion-label>
+                </ion-item>
+          </ion-footer>
+        <ion-card color="favorite" *ngIf="event.id_category == category"> 
+          <img src="{{ storageUri + event.image }}" />
+          <div class="text-price"> {{ event.price }}</div>
+          <ion-card-header>
+            <ion-card-subtitle>{{ event.description }}</ion-card-subtitle>
+            <ion-card-title>{{ event.title }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            {{ event.extra }}
+          </ion-card-content>
+        </ion-card>
+      </ion-footer>
+      </ion-footer>
+    </ion-footer>
+    <ion-img class="logo-end" src="../../../assets/images/icon.png"></ion-img>  
+  </ion-footer>
+</ion-content>

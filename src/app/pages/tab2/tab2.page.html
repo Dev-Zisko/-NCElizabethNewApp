@@ -1,0 +1,82 @@
+<ion-header (click)="statusLogLang()">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-footer *ngIf="language == 'es'" no-border>
+        <ion-title>Comidas</ion-title>
+    </ion-footer>
+    <ion-footer *ngIf="language == 'en'" no-border>
+        <ion-title>Foods</ion-title>
+    </ion-footer>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" (click)="statusLogLang()">
+  <ion-footer *ngIf="language == 'es'" no-border>
+      <ion-footer *ngIf="category == ''" no-border>
+        <p class="choose-one ion-margin ion-padding" style="text-align: center;">Seleccione una y haga click en buscar: </p>
+        </ion-footer>
+        <ion-item lines="none" class="ion-margin" color="favorite">
+          <ion-label>Categoría: </ion-label>
+          <ion-select interface="popover" [(ngModel)]="category" name="category"> 
+            <ion-footer *ngFor="let category of categories" no-border>
+              <ion-select-option value="{{ category.id }}">
+              {{ category.name }}</ion-select-option>
+            </ion-footer>
+          </ion-select>
+        </ion-item>
+        <ion-footer class="centrado" no-border>
+          <ion-button class="bottom-button" type="submit" color="favorite" (click)="getFoods()"><ion-icon name="search" color="light"></ion-icon> Buscar</ion-button>
+        </ion-footer>     
+        <ion-footer class="card-foods" no-border>
+        <ion-footer class="card-food" *ngFor="let food of foods" no-border>
+          <ion-card color="favorite" *ngIf="food.id_category == category"> 
+            <img src="{{ storageUri + food.image }}" />
+            <div class="text-price">$ {{ food.price }}</div>
+            <ion-card-header>
+              <ion-card-subtitle>{{ food.description }}</ion-card-subtitle>
+              <ion-card-title>{{ food.title }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content *ngIf="food.companion != ''">
+               {{ food.companion }}
+            </ion-card-content>
+          </ion-card>
+        </ion-footer>
+      </ion-footer>
+      <ion-img class="logo-end" src="../../../assets/images/icon.png"></ion-img>  
+  </ion-footer>
+  <ion-footer *ngIf="language == 'en'" no-border>
+    <ion-footer *ngIf="category == ''" no-border>
+      <p class="choose-one ion-margin ion-padding" style="text-align: center;">Choose one and click on search: </p>
+      </ion-footer>
+      <ion-item lines="none" class="ion-margin" color="favorite">
+        <ion-label>Category: </ion-label>
+        <ion-select interface="popover" [(ngModel)]="category" name="category">
+          <ion-footer *ngFor="let category of categories" no-border>
+            <ion-select-option value="{{ category.id }}">
+            {{ category.name }}</ion-select-option>
+          </ion-footer>
+        </ion-select>
+      </ion-item>
+      <ion-footer class="centrado" no-border>
+        <ion-button class="bottom-button" type="submit" color="favorite" (click)="getFoods()"><ion-icon name="search" color="light"></ion-icon> Search</ion-button>
+      </ion-footer> 
+      <ion-footer class="card-foods" no-border>
+      <ion-footer class="card-food" *ngFor="let food of foods" no-border>
+        <ion-card color="favorite" *ngIf="food.id_category == category"> 
+          <img src="{{ storageUri + food.image }}" />
+          <div class="text-price">$ {{ food.price }}</div>
+          <ion-card-header>
+            <ion-card-subtitle>{{ food.description }}</ion-card-subtitle>
+            <ion-card-title>{{ food.title }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content *ngIf="food.companion != ''">
+             {{ food.companion }}
+          </ion-card-content>
+        </ion-card>
+      </ion-footer>
+    </ion-footer>
+    <ion-img class="logo-end" src="../../../assets/images/icon.png"></ion-img>  
+  </ion-footer>
+</ion-content>

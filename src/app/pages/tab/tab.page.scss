@@ -1,0 +1,46 @@
+ion-content {
+    --background: url('../../../assets/images/fondo.jpg') 0 0/100% 100% no-repeat;
+}
+
+.choose-one{
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.card-foods{
+    width: 100%;
+    height: 100%;    
+}
+
+.card-food{
+    padding: 3px;
+}
+
+.centrado{
+    text-align: center;
+}
+
+.bottom-button{
+    
+    margin-bottom: 10px;
+}
+
+.text-price{
+    position: absolute;
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: #7F0000;
+    padding: 5px;
+    border-radius: 5px;
+    top: 10px;
+    left: 10px;
+}
+
+.logo-end{
+    margin-top: 15px !important;
+    bottom: 5px;
+    margin: 0 auto; 
+    height: 75px;
+    width: 75px;
+}

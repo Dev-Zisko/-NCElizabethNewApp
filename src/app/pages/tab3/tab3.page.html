@@ -1,0 +1,192 @@
+<ion-header (click)="statusLogLang()">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button ></ion-menu-button>
+    </ion-buttons>
+    <ion-footer *ngIf="language == 'es'" no-border>
+        <ion-title>Reservación</ion-title>
+    </ion-footer>
+    <ion-footer *ngIf="language == 'en'" no-border>
+        <ion-title>Reservation</ion-title>
+    </ion-footer>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" (click)="statusLogLang()">
+  <ion-footer *ngIf="language == 'es'" no-border>
+    <ion-footer class="head" no-border>
+      <ion-label class="head-label">---------------------------------</ion-label>
+      <br/>
+      <ion-icon color="light" name="mail"></ion-icon>
+      <ion-label class="head-label"> Hacer reservación</ion-label>
+      <br/>
+      <ion-label class="head-label">---------------------------------</ion-label>
+    </ion-footer>
+        <ion-footer class="form-register" no-border>
+            <ion-footer *ngIf="nickname != '' " no-border>
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="person" color="primary"></ion-icon></ion-label>
+                <ion-input required type="text" [(ngModel)]="user.name" placeholder="Nombre..."></ion-input>
+                <ion-label><ion-icon name="finger-print" color="primary"></ion-icon></ion-label>
+                <ion-input required type="text" [(ngModel)]="user.lastname" placeholder="Apellido..."></ion-input>
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="phone-portrait" color="primary"></ion-icon></ion-label>
+                <ion-input required type="text" [(ngModel)]="user.cellphone" placeholder="Número de teléfono..."></ion-input>
+              </ion-item>
+          
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="mail" color="primary"></ion-icon></ion-label>
+                <ion-input required type="email" [(ngModel)]="user.email" placeholder="Correo electrónico..."></ion-input>
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="people" color="primary"></ion-icon></ion-label>
+                <ion-input required type="text" [(ngModel)]="reservation.people" placeholder="N° de personas..."></ion-input>
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="calendar" color="primary"></ion-icon></ion-label>
+                <ion-datetime placeholder="Fecha de la reservación..." displayFormat="MM/DD/YYYY" min="{{ today | date: 'yyyy-MM-dd' }}" [(ngModel)]="date" name="date"></ion-datetime>
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="alarm" color="primary"></ion-icon></ion-label>
+                <ion-datetime placeholder="Hora de la reservación..." displayFormat="HH:mm" [(ngModel)]="hour" name="hour"></ion-datetime>
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                  <ion-textarea [(ngModel)]="reservation.comment" name="comment" placeholder="Comentarios..."></ion-textarea>
+              </ion-item>
+            </ion-footer>
+         </ion-footer>
+          <ion-footer class="form-register" no-border>
+            <ion-footer *ngIf="nickname == '' " no-border>
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="person" color="primary"></ion-icon></ion-label>
+                <ion-input required type="text" [(ngModel)]="reservation.name" placeholder="Nombre y apellido..."></ion-input> 
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="phone-portrait" color="primary"></ion-icon></ion-label>
+                <ion-input required type="text" [(ngModel)]="reservation.number" placeholder="Número de teléfono..."></ion-input>
+              </ion-item>
+          
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="mail" color="primary"></ion-icon></ion-label>
+                <ion-input required type="email" [(ngModel)]="reservation.email" placeholder="Correo electrónico..."></ion-input>
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="people" color="primary"></ion-icon></ion-label>
+                <ion-input required type="text" [(ngModel)]="reservation.people" placeholder="N° de personas..."></ion-input>
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="calendar" color="primary"></ion-icon></ion-label>
+                <ion-datetime placeholder="Fecha de la reservación..." displayFormat="MM/DD/YYYY" min="{{ today | date: 'yyyy-MM-dd' }}" [(ngModel)]="date" name="date"></ion-datetime>
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="alarm" color="primary"></ion-icon></ion-label>
+                <ion-datetime placeholder="Hora de la reservación..." displayFormat="HH:mm" [(ngModel)]="hour" name="hour"></ion-datetime>
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                  <ion-textarea [(ngModel)]="reservation.comment" name="comment" placeholder="Comentarios..."></ion-textarea>
+              </ion-item>
+            </ion-footer>
+            <ion-button class="bottom-button" type="submit" color="favorite" (click)="addReservation()">Envíar</ion-button>            
+          </ion-footer>   
+          <ion-img class="logo-end" src="../../../assets/images/icon.png"></ion-img>
+  </ion-footer>
+  <ion-footer *ngIf="language == 'en'" no-border>
+    <ion-footer class="head" no-border>
+      <ion-label class="head-label">---------------------------------</ion-label>
+      <br/>
+      <ion-icon color="light" name="mail"></ion-icon>
+      <ion-label class="head-label"> Make reservation</ion-label>
+      <br/>
+      <ion-label class="head-label">---------------------------------</ion-label>
+    </ion-footer>
+    <ion-footer class="form-register" no-border>
+            <ion-footer *ngIf="nickname != '' " no-border>
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="person" color="primary"></ion-icon></ion-label>
+                <ion-input required type="text" [(ngModel)]="user.name" placeholder="Name..."></ion-input>
+                <ion-label><ion-icon name="finger-print" color="primary"></ion-icon></ion-label>
+                <ion-input required type="text" [(ngModel)]="user.lastname" placeholder="Lastname..."></ion-input>
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="phone-portrait" color="primary"></ion-icon></ion-label>
+                <ion-input required type="text" [(ngModel)]="user.cellphone" placeholder="Phone number..."></ion-input>
+              </ion-item>
+          
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="mail" color="primary"></ion-icon></ion-label>
+                <ion-input required type="email" [(ngModel)]="user.email" placeholder="Email..."></ion-input>
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="people" color="primary"></ion-icon></ion-label>
+                <ion-input required type="text" [(ngModel)]="reservation.people" placeholder="No. of people..."></ion-input>
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="calendar" color="primary"></ion-icon></ion-label>
+                <ion-datetime placeholder="Reservation date..." displayFormat="MM/DD/YYYY" min="{{ today | date: 'yyyy-MM-dd' }}" [(ngModel)]="date" name="date"></ion-datetime>
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="alarm" color="primary"></ion-icon></ion-label>
+                <ion-datetime placeholder="Reservation hour..." displayFormat="HH:mm" [(ngModel)]="hour" name="hour"></ion-datetime>
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                  <ion-textarea [(ngModel)]="reservation.comment" name="comment" placeholder="Message..."></ion-textarea>
+              </ion-item>
+            </ion-footer>
+          </ion-footer>
+          <ion-footer class="form-register" no-border>
+            <ion-footer *ngIf="nickname == '' " no-border>
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="person" color="primary"></ion-icon></ion-label>
+                <ion-input required type="text" [(ngModel)]="reservation.name" placeholder="Name and lastname..."></ion-input> 
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="phone-portrait" color="primary"></ion-icon></ion-label>
+                <ion-input required type="text" [(ngModel)]="reservation.number" placeholder="Phone number..."></ion-input>
+              </ion-item>
+          
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="mail" color="primary"></ion-icon></ion-label>
+                <ion-input required type="email" [(ngModel)]="reservation.email" placeholder="Email..."></ion-input>
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="people" color="primary"></ion-icon></ion-label>
+                <ion-input required type="text" [(ngModel)]="reservation.people" placeholder="No. of people..."></ion-input>
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="calendar" color="primary"></ion-icon></ion-label>
+                <ion-datetime placeholder="Reservation date..." displayFormat="MM/DD/YYYY" min="{{ today | date: 'yyyy-MM-dd' }}" [(ngModel)]="date" name="date"></ion-datetime>
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="alarm" color="primary"></ion-icon></ion-label>
+                <ion-datetime placeholder="Reservation hour..." displayFormat="HH:mm" [(ngModel)]="hour" name="hour"></ion-datetime>
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                  <ion-textarea [(ngModel)]="reservation.comment" name="comment" placeholder="Message..."></ion-textarea>
+              </ion-item>
+            </ion-footer>
+            <ion-button class="bottom-button" type="submit" color="favorite" (click)="addReservation()">Send</ion-button>    
+          </ion-footer>        
+          <ion-img class="logo-end" src="../../../assets/images/icon.png"></ion-img>   
+  </ion-footer>
+</ion-content>

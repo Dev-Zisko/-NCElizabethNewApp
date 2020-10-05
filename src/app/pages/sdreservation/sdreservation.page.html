@@ -1,0 +1,128 @@
+<ion-header (click)="statusLogLang()">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button defaulthref=""></ion-back-button>
+          </ion-buttons>
+          <ion-footer *ngIf="language == 'es'" no-border>
+              <ion-title>Reservación</ion-title>
+          </ion-footer>
+          <ion-footer *ngIf="language == 'en'" no-border>
+              <ion-title>Reservation</ion-title>
+          </ion-footer>
+    </ion-toolbar>
+  </ion-header>
+  
+<ion-content class="ion-padding" (click)="statusLogLang()">
+  <ion-footer *ngIf="language == 'es'" no-border>
+    <ion-footer class="head" no-border>
+      <ion-label class="head-label">----------------------------------------</ion-label>
+      <br/>
+      <ion-icon color="light" name="mail"></ion-icon>
+      <ion-label class="head-label"> Detalle de la reservación</ion-label>
+      <br/>
+      <ion-label class="head-label">----------------------------------------</ion-label>
+    </ion-footer>
+        <ion-footer class="form-register" no-border>
+            <ion-footer *ngIf="nickname != '' " no-border>
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="person" color="primary"></ion-icon></ion-label>
+                <ion-input required type="text" [(ngModel)]="reservation.name" placeholder="Nombre..." disabled></ion-input>
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="phone-portrait" color="primary"></ion-icon></ion-label>
+                <ion-input required type="text" [(ngModel)]="reservation.number" placeholder="Número de teléfono..." disabled></ion-input>
+              </ion-item>
+          
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="mail" color="primary"></ion-icon></ion-label>
+                <ion-input required type="text" [(ngModel)]="reservation.email" placeholder="Correo electrónico..." disabled></ion-input>
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="people" color="primary"></ion-icon></ion-label>
+                <ion-input required type="text" [(ngModel)]="reservation.people" placeholder="N° de personas..." disabled></ion-input>
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="calendar" color="primary"></ion-icon></ion-label>
+                <ion-input required type="text" [(ngModel)]="reservation.date" placeholder="Fecha de la reservación..." disabled></ion-input>
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="alarm" color="primary"></ion-icon></ion-label>
+                <ion-input required type="text" [(ngModel)]="reservation.hour" placeholder="Hora de la reservación..." disabled></ion-input>
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                  <ion-textarea [(ngModel)]="reservation.comment" name="comment" placeholder="Comentarios..." disabled></ion-textarea>
+              </ion-item>
+            </ion-footer>
+         </ion-footer>
+          <ion-item class="ion-margin" color="favorite">
+            <ion-input color="dark" required type="text" *ngIf="reservation.status == 'Gris'"
+              disabled>Sin Respuesta</ion-input>
+            <ion-input color="success" required type="text" *ngIf="reservation.status == 'Verde'" name="status" disabled>
+                Aprobada</ion-input>
+            <ion-input  color="warning" required type="text" *ngIf="reservation.status == 'Rojo'" name="status" disabled>
+                Rechazada</ion-input>
+          </ion-item>
+          <ion-img class="logo-end" src="../../../assets/images/icon.png"></ion-img>
+  </ion-footer>
+  <ion-footer *ngIf="language == 'en'" no-border>
+    <ion-footer class="head" no-border>
+      <ion-label class="head-label">-------------------------------------</ion-label>
+      <br/>
+      <ion-icon color="light" name="mail"></ion-icon>
+      <ion-label class="head-label"> Detail of reservation</ion-label>
+      <br/>
+      <ion-label class="head-label">-------------------------------------</ion-label>
+    </ion-footer>
+        <ion-footer class="form-register" no-border>
+            <ion-footer *ngIf="nickname != '' " no-border>
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="person" color="primary"></ion-icon></ion-label>
+                <ion-input required type="text" [(ngModel)]="reservation.name" placeholder="Name..." disabled></ion-input>
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="phone-portrait" color="primary"></ion-icon></ion-label>
+                <ion-input required type="text" [(ngModel)]="reservation.number" placeholder="Phone number..." disabled></ion-input>
+              </ion-item>
+          
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="mail" color="primary"></ion-icon></ion-label>
+                <ion-input required type="text" [(ngModel)]="reservation.email" placeholder="Email..." disabled></ion-input>
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="people" color="primary"></ion-icon></ion-label>
+                <ion-input required type="text" [(ngModel)]="reservation.people" placeholder="No. of people..." disabled></ion-input>
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="calendar" color="primary"></ion-icon></ion-label>
+                <ion-input required type="text" [(ngModel)]="reservation.date" placeholder="Reservation date..." disabled></ion-input>
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                <ion-label><ion-icon name="alarm" color="primary"></ion-icon></ion-label>
+                <ion-input required type="text" [(ngModel)]="reservation.hour" placeholder="Reservation hour..." disabled></ion-input>
+              </ion-item>
+
+              <ion-item class="bottom-inputs" color="light">
+                  <ion-textarea [(ngModel)]="reservation.comment" name="comment" placeholder="Message..." disabled></ion-textarea>
+              </ion-item>
+            </ion-footer>
+         </ion-footer>
+          <ion-item class="ion-margin" color="favorite">
+            <ion-input  color="dark" required type="text" *ngIf="reservation.status == 'Gris'"
+              disabled>Unanswered</ion-input>
+            <ion-input  color="success" required type="text" *ngIf="reservation.status == 'Verde'" name="status" disabled>
+                Approved</ion-input>
+            <ion-input  color="warning" required type="text" *ngIf="reservation.status == 'Rojo'" name="status" disabled>
+                Rejected</ion-input>
+          </ion-item>
+          <ion-img class="logo-end" src="../../../assets/images/icon.png"></ion-img>
+  </ion-footer>
+</ion-content>
